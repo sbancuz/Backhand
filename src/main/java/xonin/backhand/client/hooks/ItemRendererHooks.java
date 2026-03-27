@@ -47,6 +47,8 @@ public class ItemRendererHooks {
         } else {
             GL11.glEnable(GL11.GL_CULL_FACE);
             GL11.glCullFace(GL11.GL_FRONT);
+            // Minecraft expects ALPHA_TEST to always be enabled, if some custom renderer disables it, then re-enable it
+            GL11.glEnable(GL11.GL_ALPHA_TEST);
             GL11.glPushMatrix();
             GL11.glScalef(-1, 1, 1);
             float f3 = player.prevRenderArmPitch + (player.renderArmPitch - player.prevRenderArmPitch) * frame;
